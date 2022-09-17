@@ -1,3 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 @import 'top';
+
+// 認証関連
+@import "users/sign_up";
+@import "users/sign_in";
