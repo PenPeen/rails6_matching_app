@@ -64,3 +64,9 @@ gem 'rails-i18n'
 
 # デバックツールの追加
 gem 'pry-rails'
+
+# 画像アップロード
+gem 'carrierwave', '~> 2.0'
+
+# 画像の加工
+gem "mini_magick"
