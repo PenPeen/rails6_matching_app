@@ -61,3 +61,6 @@ gem 'net-smtp'
 
 # バリデーションメッセージ等の日本語化
 gem 'rails-i18n'
+
+# デバックツールの追加
+gem 'pry-rails'

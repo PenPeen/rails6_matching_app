@@ -6,6 +6,7 @@
 // bootstrapの使用
 import 'bootstrap';
 import '../stylesheets/application';
+import '@fortawesome/fontawesome-free/js/all';
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
