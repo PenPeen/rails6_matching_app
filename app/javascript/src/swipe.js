@@ -53,17 +53,19 @@ if(location.pathname == "/users" || location.pathname == '/users/') {
             if (event.deltaX === 0) return;
             if (event.center.x === 0 && event.center.y === 0) return;
     
+            // 移動中の装飾
             el.classList.add('moving');
     
-            // クラスの切り替え（操作に紐づくアイコンの表示）  
+            // X方向へのスクロール
             swipeContainer.classList.toggle('swipe_like', event.deltaX > 0);
+            // -X方向へのスクロール
             swipeContainer.classList.toggle('swipe_dislike', event.deltaX < 0);
-    
-            // 移動距離に応じて表示を変更   
+
             let xMulti = event.deltaX * 0.03;
             let yMulti = event.deltaY / 80;
             let rotate = xMulti * yMulti;
-    
+            
+            // 要素の配置変更（X軸、Y軸、回転）
             event.target.style.transform = 'translate(' + event.deltaX + 'px, ' + event.deltaY + 'px) rotate(' + rotate + 'deg)';
             });
 
@@ -71,20 +73,23 @@ if(location.pathname == "/users" || location.pathname == '/users/') {
              * panendイベント（要素から指を離した時）
              */
             hammertime.on('panend', function (event) {
+                // 移動中の装飾削除
                 el.classList.remove('moving');
 
-                // アイコン削除
+                // クラス削除
                 swipeContainer.classList.remove('swipe_like');
                 swipeContainer.classList.remove('swipe_dislike');
-        
-                let moveOutWidth = document.body.clientWidth;
-        
+                
+                // 移動量（X軸）の取得
                 let keep = Math.abs(event.deltaX) < 200
+                // スクロールが200以上であれば、判定済みとする
                 event.target.classList.toggle('removed', !keep);
-        
+                
                 if (keep) {
+                    // 元の位置に戻す。
                     event.target.style.transform = '';
                 } else {
+                    let moveOutWidth = document.body.clientWidth;
                     let endX = Math.max(Math.abs(event.velocityX) * moveOutWidth, moveOutWidth) + 100;
                     let toX = event.deltaX > 0 ? endX : -endX;
                     let endY = Math.abs(event.velocityY) * moveOutWidth;
@@ -93,6 +98,7 @@ if(location.pathname == "/users" || location.pathname == '/users/') {
                     let yMulti = event.deltaY / 80;
                     let rotate = xMulti * yMulti;
         
+                    // 要素を画面外に移動させる
                     event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
         
                     initCards();
