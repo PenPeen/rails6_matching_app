@@ -12,5 +12,10 @@ class Users::RegistrationsOverrideController < Devise::RegistrationsController
 
     def after_update_path_for(resource)
         user_path(resource)
-      end
+    end
+
+    # サインアップ後のリダレクト先変更
+    def after_sign_up_path_for(resource)
+    users_path
+    end
 end
