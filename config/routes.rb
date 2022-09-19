@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
 
   # Profile
-  get 'users/:id', to: 'users/profile#show', as: 'user'
+  resources :users, only: [:index, :show]
 
 end

@@ -11,4 +11,4 @@ class ApplicationController < ActionController::Base
         # 更新時
         devise_parameter_sanitizer.permit(:account_update, keys: [:name, :self_introduction,:profile_image])
     end
-end
+  end
