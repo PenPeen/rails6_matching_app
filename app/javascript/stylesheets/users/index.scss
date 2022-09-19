@@ -37,6 +37,8 @@
     flex-direction: column;
     position: relative;
     transition: opacity 0.1s ease-in-out;
+    
+    //  LIKE,NOT LIKEボタンx
     &--status {
       position: absolute;
       top: 50%;
@@ -45,6 +47,7 @@
       width: 100%;
       text-align: center;
       pointer-events: none;
+      // アイコン非表示設定
       svg {
         font-size: 100px;
         opacity: 0;
