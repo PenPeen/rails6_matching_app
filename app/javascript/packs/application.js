@@ -13,7 +13,13 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-require("src/profile_image_upload");
+import 'hammerjs';
+
+import '../src/profile_image_upload';
+import '../src/swipe';
+
+// require("src/profile_image_upload");
+// require("src/swipe")
 
 Rails.start()
 Turbolinks.start()
