@@ -55,3 +55,11 @@ User.create!(
   gender: 0,
   profile_image: File.open("#{Rails.root}/db/dummy_images/6.jpg")
 )
+User.create!(
+  email: 'user7@gmail.com',
+  password: '11111111',
+  name: 'としちゃん',
+  self_introduction: 'アイドルやってます。',
+  gender: 1,
+  profile_image: File.open("#{Rails.root}/db/dummy_images/7.jpg")
+)

@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   # Profile
   resources :users, only: [:index, :show]
 
+  # reaction'
+  resources :reactions, only: [:create]
+
 end
