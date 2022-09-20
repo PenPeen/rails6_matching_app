@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # アソシエーション
-  has_one :image
+  has_many :reactions
 
   # バリデーション
   validates :name, presence: true

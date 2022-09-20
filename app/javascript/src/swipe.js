@@ -85,10 +85,14 @@ if(location.pathname == "/users" || location.pathname == '/users/') {
                 // スクロールが200以上であれば、判定済みとする
                 event.target.classList.toggle('removed', !keep);
                 
+                // リアクション判定
                 if (keep) {
                     // 元の位置に戻す。
                     event.target.style.transform = '';
                 } else {
+                    // スクロール方向でリアクション切替
+                    let reaction = event.deltaX > 0 ? "like" : "dislike";
+
                     let moveOutWidth = document.body.clientWidth;
                     let endX = Math.max(Math.abs(event.velocityX) * moveOutWidth, moveOutWidth) + 100;
                     let toX = event.deltaX > 0 ? endX : -endX;
@@ -97,6 +101,9 @@ if(location.pathname == "/users" || location.pathname == '/users/') {
                     let xMulti = event.deltaX * 0.03;
                     let yMulti = event.deltaY / 80;
                     let rotate = xMulti * yMulti;
+
+                    // Ajax リアクションの送信
+                    postReaction(el.id, reaction);
         
                     // 要素を画面外に移動させる
                     event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
@@ -119,7 +126,7 @@ if(location.pathname == "/users" || location.pathname == '/users/') {
         })
 
         /**
-         * リアクションクリック後のカードの移動
+         * リアクションボタンクリック後の処理
          * 
          * LIKE     右で移動
          * DIS LIKE 左で移動 
@@ -133,18 +140,40 @@ if(location.pathname == "/users" || location.pathname == '/users/') {
 
             let moveOutWidth = document.body.clientWidth * 2;
             let card = cards[0];
+
+            // Ajaxリアクション送信
+            let user_id = card.id;
+            postReaction(user_id, reaction);
+
             card.classList.add('removed');
 
             // カードの移動
             if (reaction == "like") {
+                // X方向へ移動
                 card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
             } else {
+                // -X方向への移動
                 card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
             }
 
             // カード初期化
             initCards();
         }
-    
+
+        // Ajax リアクション結果を送信
+        function postReaction(user_id, reaction) {
+            $.ajax({
+                url: "reactions",
+                type: "POST",
+                datatype: "json",
+                data: {
+                    user_id: user_id,
+                    reaction: reaction,
+                }
+            })
+            .done(function () {
+                console.log("done!")
+            })
+        }
     });
 }
