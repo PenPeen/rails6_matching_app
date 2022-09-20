@@ -63,3 +63,67 @@ User.create!(
   gender: 1,
   profile_image: File.open("#{Rails.root}/db/dummy_images/7.jpg")
 )
+User.create!(
+  email: 'user8@gmail.com',
+  password: '11111111',
+  name: 'アンポンタン',
+  self_introduction: '初めて見ました',
+  gender: 1,
+)
+
+p "create reactions"
+Reaction.create!(
+  from_user_id: 1,
+  to_user_id: 2,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 1,
+  to_user_id: 3,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 1,
+  to_user_id: 5,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 1,
+  to_user_id: 6,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 3,
+  to_user_id: 1,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 4,
+  to_user_id: 2,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 4,
+  to_user_id: 5,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 4,
+  to_user_id: 6,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 5,
+  to_user_id: 1,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 5,
+  to_user_id: 2,
+  status: 0
+)
+Reaction.create!(
+  from_user_id: 6,
+  to_user_id: 1,
+  status: 0
+)
