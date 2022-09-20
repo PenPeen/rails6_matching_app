@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   # reaction'
   resources :reactions, only: [:create]
 
+  # matching
+  resources :matching, only: [:index]
+
 end
