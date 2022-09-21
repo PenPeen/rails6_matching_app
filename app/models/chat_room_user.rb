@@ -4,4 +4,5 @@ class ChatRoomUser < ApplicationRecord
     belongs_to :chat_room
 
     has_many :chat_messages
+    has_many :users, through: :chat_room_users
 end
