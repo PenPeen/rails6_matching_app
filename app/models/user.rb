@@ -4,11 +4,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # アソシエーション
   # リアクション(自己結合)
   # - LIKEしたユーザ
   has_many :active_relationships, class_name: "Reaction", foreign_key: :to_user_id, dependent: :destroy
   # - LIKEされたユーザ
   has_many :passive_relationships, class_name: "Reaction", foreign_key: :from_user_id, dependent: :destroy
+
+  # チャットルーム
+  has_many :chat_room_users
+  has_many :chat_rooms, through: :chat_room_users
+
+  # チャットメッセージ
+  has_many :chat_messages
 
   # バリデーション
   validates :name, presence: true

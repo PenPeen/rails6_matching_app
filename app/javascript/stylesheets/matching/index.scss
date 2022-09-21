@@ -18,6 +18,9 @@
     &__list {
       min-height: 500px;
     }
+    &__link{
+      text-decoration: none;
+    }
     &__person {
       display: flex;
       align-items: center;
