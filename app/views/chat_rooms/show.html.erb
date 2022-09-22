@@ -1,7 +1,8 @@
 <p>チャットルームページ</p>
 
-<div id='messages'>
-    <%= render :partial => "messages/message", :collection => @messages %>
+<div id='chat-messages'>
+    <%= render @chat_messages %>
+    <%#= render :partial => "chat_messages/_chat_message", :collection => @chat_messages %>
 </div>
 
 <form>

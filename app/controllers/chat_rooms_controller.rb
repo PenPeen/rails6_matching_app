@@ -41,7 +41,7 @@ class ChatRoomsController < ApplicationController
 
         # メッセージ一覧取得
         # .orderBy(日時順)
-        @messages = ChatMessage.where(chat_room_id: room_id).order(:created_at)
+        @chat_messages = ChatMessage.where(chat_room_id: room_id).order(:created_at)
         
         @chat_room = ChatRoom.find(params[:id])
         @chat_room_user = @chat_room.chat_room_users.where.not(user_id: current_user.id).first.user
