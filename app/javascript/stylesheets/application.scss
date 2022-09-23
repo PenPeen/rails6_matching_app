@@ -15,8 +15,11 @@
 @import "users/show";
 @import "users/edit";
 
-//　スワイプ画面
+// スワイプ画面
 @import "users/index";
 
 // マッチング画面
 @import "matching/index";
+
+// チャット画面
+@import "chat_rooms/show";

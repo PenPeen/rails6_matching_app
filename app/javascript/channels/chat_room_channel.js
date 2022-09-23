@@ -32,16 +32,18 @@ const appChatRoom = consumer.subscriptions.create("ChatRoomChannel", {
   }
 });
 
-// Enterキーでチャットを送信する
+// Shift + Enterキーでチャットを送信する
 if(/chat_rooms/.test(location.pathname)) {
   $(document).on("keydown", ".chat-room__message-form_textarea", function(e) {
     if (e.key === "Enter") {
-      const chat_room_id = $('textarea').data('chat_room_id')
-
-      // speakメソッド実行
-      appChatRoom.speak(e.target.value, chat_room_id);
-      e.target.value = '';
-      e.preventDefault();
+      if(e.shiftKey){
+        const chat_room_id = $('textarea').data('chat_room_id')
+        
+        // speakメソッド実行
+        appChatRoom.speak(e.target.value, chat_room_id);
+        e.target.value = '';
+        e.preventDefault();
+      }
     }
   })
 }
