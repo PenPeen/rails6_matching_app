@@ -12,12 +12,11 @@ class ChatRoomsController < ApplicationController
         # チャットルームが存在しない場合は作成する
         # トランザクション処理
         begin
-            ActiveRecord::Base.transaction do
-                if chat_room.blank?
+            if chat_room.blank?
+                ActiveRecord::Base.transaction do
                     chat_room = ChatRoom.create!
                     ChatRoomUser.create!(chat_room_id: chat_room.id, user_id: current_user.id)
                     ChatRoomUser.create!(chat_room_id: chat_room.id, user_id: params[:user_id])
-                    raise ActiveRecord::RecordNotSaved
                 end
             end
         # エラーログ 書き出し
