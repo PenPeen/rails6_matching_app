@@ -14,7 +14,7 @@ class ReactionsController < ApplicationController
             
         # 既存
         else
-            reaction.update(
+            reaction.update!(
                 status: params[:reaction]
             )
         end
