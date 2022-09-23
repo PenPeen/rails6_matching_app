@@ -66,7 +66,8 @@ if(location.pathname == "/users" || location.pathname == '/users/') {
             let rotate = xMulti * yMulti;
             
             // 要素の配置変更（X軸、Y軸、回転）
-            event.target.style.transform = 'translate(' + event.deltaX + 'px, ' + event.deltaY + 'px) rotate(' + rotate + 'deg)';
+            event.target.style.transform = `translate(${event.deltaX}px, ${event.deltaY}px) rotate(${rotate}deg)`;
+            // event.target.style.transform = 'translate(' + event.deltaX + 'px, ' + event.deltaY + 'px) rotate(' + rotate + 'deg)';
             });
 
             /**
@@ -106,7 +107,7 @@ if(location.pathname == "/users" || location.pathname == '/users/') {
                     postReaction(el.id, reaction);
         
                     // 要素を画面外に移動させる
-                    event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
+                    event.target.style.transform = `translate(${toX}px, ${(toY + event.deltaY) }px) rotate(${rotate}deg)`;
         
                     initCards();
                 }
