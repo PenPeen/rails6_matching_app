@@ -7,12 +7,12 @@ import consumer from "./consumer"
 
 const appChatRoom = consumer.subscriptions.create("ChatRoomChannel", {
 
-  // 接続時
+  // クライアント接続時
   connected() {
     // Called when the subscription is ready for use on the server
   },
 
-  // 切断時
+  // クライアント切断時
   disconnected() {
     // Called when the subscription has been terminated by the server
   },
@@ -26,7 +26,7 @@ const appChatRoom = consumer.subscriptions.create("ChatRoomChannel", {
     chatMessages.insertAdjacentHTML('beforeend', data['chat_message']);
   },
   
-  // 購読しているチェネルのspeakメソッドをWebsocket通信経由で呼び出し
+  // 購読チェネルのspeakメソッドをWebsocket通信経由で呼び出し
   speak: function(chat_message, chat_room_id) {
     return this.perform('speak', { chat_message: chat_message, chat_room_id: chat_room_id });
   }
