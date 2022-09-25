@@ -69,4 +69,7 @@ gem 'pry-rails'
 gem 'carrierwave', '~> 2.0'
 
 # 画像の加工
-gem "mini_magick"
+gem 'mini_magick'
+
+# PHPDoc YARD
+gem 'yard'

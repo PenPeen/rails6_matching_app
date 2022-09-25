@@ -1,3 +1,6 @@
+# MatchingControllre
+
+# マッチングページの表示を担当
 class MatchingController < ApplicationController
     # ゲストユーザーからのログイン禁止
     before_action :authenticate_user!

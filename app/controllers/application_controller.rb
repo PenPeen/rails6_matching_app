@@ -1,10 +1,15 @@
+# ApplicationController
 class ApplicationController < ActionController::Base
-  # devise情報登録
+
+  # devise_controllre before_action
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # Devise ストロングパラメータを追加
-  # https://github.com/heartcombo/devise#strong-parameters
   protected
+
+    # Devise ストロングパラメータを追加
+    # 
+    # @params [nil]
+    # https://github.com/heartcombo/devise#strong-parameters
     def configure_permitted_parameters
         # 登録時
         devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :gender])
