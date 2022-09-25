@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# 
+# テストユーザーの作成
+# 
 p "create Users"
 User.create!(
   email: 'user1@gmail.com',
@@ -71,6 +74,9 @@ User.create!(
   gender: 1,
 )
 
+# 
+# リアクションの作成
+# 
 p "create reactions"
 Reaction.create!(
   from_user_id: 1,
@@ -126,4 +132,45 @@ Reaction.create!(
   from_user_id: 6,
   to_user_id: 1,
   status: 0
+)
+
+# 
+# チャッルームの作成
+# 
+p "create ChatRoom"
+ChatRoom.create!
+
+# 
+# 中間テーブル
+# 
+p "create ChatRoomUser"
+ChatRoomUser.create!(
+  user_id: 1,
+  chat_room_id: 1
+)
+ChatRoomUser.create!(
+  user_id: 3,
+  chat_room_id: 1
+)
+
+# 
+# テストメッセージの作成
+# 
+p "create ChatMessage"
+ChatMessage.create!(
+  user_id: 1,
+  chat_room_id: 1,
+  content: "エヴァさん こんにちは",
+)
+
+ChatMessage.create!(
+  user_id: 1,
+  chat_room_id: 1,
+  content: "エマです！",
+)
+
+ChatMessage.create!(
+  user_id: 3,
+  chat_room_id: 1,
+  content: "メッセージありがとう！　エヴァです！",
 )
