@@ -1,6 +1,12 @@
+# ChatRoomsController
+# 
+# チャットルームの作成及び表示を担当
 class ChatRoomsController < ApplicationController
+    before_action :authenticate_user!
     
     # チャットルームの作成
+    # 
+    # @return [nil] Showへのリダイレクト
     def create
 
         # ログインユーザーが所属するチャットルームを取得
@@ -34,6 +40,8 @@ class ChatRoomsController < ApplicationController
     end
     
     # チャット画面の表示
+    # 
+    # @return [nil] chat_rooms/show.html.erbを表示
     def show
         # ルームID（createアクションから受取）
         room_id = params[:id]
@@ -44,6 +52,5 @@ class ChatRoomsController < ApplicationController
         
         @chat_room = ChatRoom.find(params[:id])
         @chat_room_user = @chat_room.chat_room_users.where.not(user_id: current_user.id).first.user
-        # @chat_messages = ChatMessage.where(chat_room: @chat_room)
     end
 end
