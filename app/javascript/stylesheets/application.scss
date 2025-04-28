@@ -1,25 +1,25 @@
-@import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import "bootstrap/scss/bootstrap";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
 
 // TOP
-@import 'top';
+@import './top';
 
 // ナビゲーションバー
-@import "layouts/navbar";
+@import "./layouts/navbar";
 
 // 認証関連
-@import "users/sign_up";
-@import "users/sign_in";
+@import "./users/sign_up";
+@import "./users/sign_in";
 
 // プロフィール
-@import "users/show";
-@import "users/edit";
+@import "./users/show";
+@import "./users/edit";
 
 // スワイプ画面
-@import "users/index";
+@import "./users/index";
 
 // マッチング画面
-@import "matching/index";
+@import "./matching/index";
 
 // チャット画面
-@import "chat_rooms/show";
+@import "./chat_rooms/show";
