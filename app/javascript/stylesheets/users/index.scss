@@ -11,7 +11,7 @@
         width: 340px;
         height: 520px;
         object-fit: cover;
-        background-image: url("~profile_default_img.png");
+        background-image: url('../../images/profile_default_img.png');
         background-size: contain;
         margin: auto;
       }
@@ -29,7 +29,7 @@
       }
     }
   }
-  
+
   .swipe {
     height: 92vh;
     overflow: hidden;
@@ -37,7 +37,7 @@
     flex-direction: column;
     position: relative;
     transition: opacity 0.1s ease-in-out;
-    
+
     //  LIKE,NOT LIKEボタンx
     &--status {
       position: absolute;
@@ -93,9 +93,9 @@
         padding: 0 16px;
         pointer-events: none;
       }
-      img {	
-        max-width: 100%;	
-        pointer-events: none;	
+      img {
+        max-width: 100%;
+        pointer-events: none;
       }
     }
     &--buttons {
@@ -130,15 +130,15 @@
       cursor: grabbing;
     }
   }
-  
+
   .fa-heart {
     color: #FFACE4;
   }
-  
+
   .fa-times {
     color: #CDD6DD;
   }
-  
+
   @media (min-width: 415px) {
     .user-index-page {
       border: 1px solid rgba(0, 0, 0, 0.125);
@@ -146,10 +146,9 @@
       margin: 8px auto;
     }
   }
-  
+
   @media (min-width: 414px) {
     .swipe {
       height: 640px;
     }
   }
-  

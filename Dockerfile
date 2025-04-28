@@ -1,21 +1,43 @@
-FROM ruby:3.1
+FROM --platform=linux/arm64 ruby:3.1.2
 
-# yarnパッケージ管理ツールをインストール
-RUN apt-get update && apt-get install -y curl apt-transport-https wget mariadb-client && \
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install -y yarn
+# システムの依存関係をインストール
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    apt-transport-https \
+    wget \
+    mariadb-client \
+    build-essential \
+    libpq-dev
 
-RUN apt-get update -qq && apt-get install -y nodejs yarn
+# Node.js 14をインストール
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
+    && apt-get install -y nodejs
+
+# Yarnをインストール
+RUN npm install -g yarn
+
 RUN mkdir /myapp
 WORKDIR /myapp
+
+# Bundlerのバージョンを固定
+RUN gem install bundler -v 2.3.7
+
+# Gemfileのコピーと依存関係のインストール
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
-RUN bundle install
-COPY . /myapp
 
-RUN yarn install --check-files
-RUN bundle exec rails webpacker:compile
+# ローカルでのバンドルインストール
+RUN bundle config set --local path 'vendor/bundle' && \
+    bundle _2.3.7_ install
+
+# package.jsonのコピーと依存関係のインストール
+COPY package.json /myapp/package.json
+COPY yarn.lock /myapp/yarn.lock
+RUN yarn install
+
+# プロジェクトファイルのコピー
+COPY . /myapp
 
 # コンテナ起動時に実行させるスクリプトを追加
 COPY entrypoint.sh /usr/bin/

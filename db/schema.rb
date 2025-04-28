@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_09_21_050858) do
 
-  create_table "chat_messages", charset: "utf8mb4", force: :cascade do |t|
+  create_table "chat_messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "chat_room_id", null: false
     t.text "content"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_09_21_050858) do
     t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
 
-  create_table "chat_room_users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "chat_room_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "chat_room_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 2022_09_21_050858) do
     t.index ["user_id"], name: "index_chat_room_users_on_user_id"
   end
 
-  create_table "chat_rooms", charset: "utf8mb4", force: :cascade do |t|
+  create_table "chat_rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "reactions", charset: "utf8mb4", force: :cascade do |t|
+  create_table "reactions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "from_user_id", null: false
     t.bigint "to_user_id", null: false
     t.integer "status", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_09_21_050858) do
     t.index ["to_user_id"], name: "index_reactions_on_to_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

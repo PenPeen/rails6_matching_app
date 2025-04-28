@@ -24,7 +24,7 @@
           height: 32px;
           width: 32px;
           border-radius: 50%;
-          background-image: url("~profile_default_img_128.png");
+          background-image: url('../../images/profile_default_img_128.png');
           background-size: contain;
         }
         &-img {
@@ -56,7 +56,7 @@
       }
     }
   }
-  
+
   .chat-message {
     &__partner {
       display: flex;
@@ -66,7 +66,7 @@
         height: 24px;
         width: 24px;
         border-radius: 50%;
-        background-image: url("~profile_default_img_128.png");
+        background-image: url('../../images/profile_default_img_128.png');
         background-size: contain;
         margin-left: 8px;
       }
@@ -91,20 +91,19 @@
       justify-content: flex-end;
     }
   }
-  
+
   .main-color-bg {
     background: #FD3378;
     color: #fff;
   }
-  
+
   textarea:focus {
     outline: none;
   }
-  
+
   @media (min-width: 414px) {
     .chat-room-show-page {
       border: 1px solid rgba(0, 0, 0, 0.125);
       border-radius: 0.25rem;
     }
   }
-  
